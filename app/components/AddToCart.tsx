@@ -2,7 +2,11 @@
 import React from "react";
 
 const AddToCartButton = () => {
-  return <button onClick={() => console.log("add")}>add to cart</button>;
+  return (
+    <button className="btn btn-primary" onClick={() => console.log("add")}>
+      Add to Cart
+    </button>
+  );
 };
 
 export default AddToCartButton;
