@@ -1,12 +1,15 @@
 import React from "react";
 import UserTable from "./UserTable";
 
-const UsersPage = async () => {
+type Props = {
+  searchParams: { sortOrder: keyof User }
+}
 
+const UsersPage = async ({ searchParams }: Props) => {
   return (
     <>
       <h1 className="text-2xl font-bold mb-5">UsersPage</h1>
-      <UserTable />
+      <UserTable sortOrder={searchParams.sortOrder} />
     </>
   );
 };
