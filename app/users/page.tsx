@@ -9,10 +9,12 @@ type Props = {
 const UsersPage = async ({ searchParams }: Props) => {
   return (
     <>
-      <h1 className="text-2xl font-bold mb-5">UsersPage</h1>
-      <Link href="/users/new" className="btn btn-sm">
-        New user
-      </Link>
+      <h1 className="text-2xl font-bold">UsersPage</h1>
+      <div className="p-2 mb-2 bg-slate-300 rounded">
+        <Link href="/users/new" className="btn btn-sm btn-primary">
+          New user
+        </Link>
+      </div>
       <Suspense fallback={<LoadingTable />}>
         <UserTable sortOrder={searchParams.sortOrder} />
       </Suspense>

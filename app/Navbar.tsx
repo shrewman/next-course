@@ -3,16 +3,16 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-slate-400">
+    <nav className="bg-slate-300">
       <ul className="flex">
-        <li className="hover:bg-slate-300 px-3 py-2">
-          <Link href="/">Home</Link>
+        <li className="hover:bg-slate-400 transition py-2">
+          <Link href="/" className="px-5 py-3">Home</Link>
         </li>
-        <li className="hover:bg-slate-300 px-3 py-2">
-          <Link href="/users">Users</Link>
+        <li className="hover:bg-slate-400 transition py-2">
+          <Link href="/users" className="px-5 py-3">Users</Link>
         </li>
-        <li className="hover:bg-slate-300 px-3 py-2">
-          <Link href="/admin">Admin</Link>
+        <li className="hover:bg-slate-400 transition py-2">
+          <Link href="/admin" className="px-5 py-3">Admin</Link>
         </li>
       </ul>
     </nav>
