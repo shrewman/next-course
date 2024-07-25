@@ -37,3 +37,14 @@ export async function PUT(request: NextRequest, { params }: Props) {
   return NextResponse.json({ id: params.id, username, email, phone });
 }
 
+export async function DELETE(request: NextRequest, { params }: Props) {
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/users/${params.id}`,
+  );
+  const user = await res.json();
+  if (!user.id) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+  return NextResponse.json({});
+}
+
