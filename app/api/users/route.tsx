@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import schema from "./schema";
 
 export async function GET(request: NextRequest) {
   const res = await fetch("https://jsonplaceholder.typicode.com/users/");
@@ -8,11 +9,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  if (!body.username)
-    return NextResponse.json(
-      { error: "The username is required" },
-      { status: 400 },
-    );
+  const validation = schema.safeParse(body);
+  if (!validation.success)
+    return NextResponse.json(validation.error.errors, { status: 400 });
   return NextResponse.json(
     {
       id: 1,

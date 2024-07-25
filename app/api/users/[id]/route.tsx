@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../schema";
 
 interface Props {
   params: { id: number };
@@ -19,11 +20,9 @@ export async function PUT(request: NextRequest, { params }: Props) {
   const body = await request.json();
   const { username, email, phone } = body;
 
-  if (!username)
-    return NextResponse.json(
-      { error: "The username is required" },
-      { status: 400 },
-    );
+  const validation = schema.safeParse(body);
+  if (!validation.success)
+    return NextResponse.json(validation.error.errors, { status: 400 });
 
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/users/${params.id}`,
@@ -47,4 +46,3 @@ export async function DELETE(request: NextRequest, { params }: Props) {
   }
   return NextResponse.json({});
 }
-
