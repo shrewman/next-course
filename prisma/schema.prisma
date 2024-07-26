@@ -13,7 +13,9 @@ datasource db {
 model User {
   id           Int      @id @default(autoincrement())
   email        String   @unique
-  name         String
+  name         String?
+  username     String
+  phone        String?
   followers    Int      @default(0)
   isActive     Boolean  @default(true)
   registeredAt DateTime @default(now())
