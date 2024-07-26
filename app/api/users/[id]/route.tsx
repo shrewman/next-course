@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import schema from "../schema";
+import prisma from "@/prisma/client";
 
 interface Props {
   params: { id: string };
 }
 
 export async function GET(request: NextRequest, { params }: Props) {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${params.id}`,
-  );
-  const user = await res.json();
-  if (!user.id) {
+  const user = await prisma.user.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+  if (!user) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
   return NextResponse.json(user);
