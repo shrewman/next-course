@@ -2,8 +2,8 @@ import React from "react";
 
 type Props = {
   params: {
-    id: number;
-    photoId: number;
+    id: string;
+    photoId: string;
   };
 };
 

@@ -3,7 +3,7 @@ import React from "react";
 
 interface Props {
   params: {
-    id: number;
+    id: string;
   };
 }
 

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import schema from "../schema";
 
 interface Props {
-  params: { id: number };
+  params: { id: string };
 }
 
 export async function GET(request: NextRequest, { params }: Props) {
